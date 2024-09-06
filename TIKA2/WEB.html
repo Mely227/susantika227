@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>website angkatan</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="active"> Home</a>
+            <a href="#" >Biodata</a>
+            <a href="#" >Menu</a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-img">
+            <img src="WhatsApp Image 2024-08-21 at 23.20.54_d838fbe0.jpg" alt="">
+        </div>
+        <div class="home-content">
+            <h1>Hi,Aku <span>Mely susantika dewi</span></h1>
+            <h3 class="typing-text">I'm a <span></span></h3>
+            <p>Saya merupakan seorang MABA Teknik Informatika dengan NIM:240411100227 . Saya lahir di Pamekasan, 08 Agustus 2005, saya asli warga madura (WARLOG). Kalian dapat menghubungi saya menggunakan nomor Whatsapp 081944995904</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </section>
+    <!-- AWAL DARI BAGIAN ANGKATAN -->
+    <div class="angkatan" id="angkatan">
+    </div>
+    <!-- AKHIR DARI BAGIAN ANGKATAN -->
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+fetch('data.json')
+.then(response => response.json())
+.then(data => {
+    const angkatanDiv = document.getElementById('angkatan');
+
+    data.forEach(uwu => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const img = document.createElement('img');
+        img.src = uwu.fotoselfie;
+        img.className = 'card-img-top';
+        img.alt = uwu.nama;
+
+        const cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        const cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title';
+        cardTitle.textContent = uwu.nama;
+
+        const cardText = document.createElement('p');
+        cardText.className = 'card-text';
+        cardText.innerHTML = `
+          <strong>NIM:</strong> ${uwu.nim}<br>
+          <strong>ALAMAT:</strong> ${uwu.alamat}<br>
+          <strong>TTL:</strong> ${uwu.ttl}<br>
+          <strong>NO:</strong> ${uwu.no}<br>
+          <strong>KELOMPOK:</strong> ${uwu.kelompok}
+        `;
+
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardText);
+        card.appendChild(img);
+        card.appendChild(cardBody);
+        angkatanDiv.appendChild(card);
+    });
+})
+.catch(error => console.error('Error fetching data:', error));
+
+</script>
+</body>
+</html>
+   
+   
